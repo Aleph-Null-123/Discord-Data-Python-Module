@@ -168,10 +168,10 @@ class Plots:
         plt.show()
         
 class Analyzer:
-    def __init__(self, tz: Timezone = Timezone(), period: tuple = None, channels: Channels = None):
+    def __init__(self, tz: Timezone = Timezone(), period: tuple = None, channels: Channels = None, data: Data = Data()):
         self.tz = tz
         if channels is None:
-            channels = Channels(self.tz)
+            channels = Channels(tz = self.tz, data = data)
         self.channels = channels
         if period is None:
             period = self.channels.date_range()
